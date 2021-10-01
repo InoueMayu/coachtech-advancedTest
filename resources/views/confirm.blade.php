@@ -70,10 +70,9 @@
             <input type="hidden" name="opinion" value="{{ $inputs['opinion'] }}">
         </div>
 
-        <div class="text-center mt-5">
-            <button name="back" type="submit" value="back" class="btn btn-dark">修正する</button>
-            <button name="submit" type="submit" value="submit" class="btn btn-primary">送信</button>
-            <a href=""></a>
+        <div class="d-flex flex-column btn-div mt-5">
+            <button name="submit" type="submit" value="submit" class="btn btn-dark">送信</button>
+            <button name="back" type="submit" value="back" class="reset-btn mt-3">修正する</button>
         </div>
     </form>
 </div>
@@ -89,6 +88,23 @@
     form {
         width: 100%;
         margin: 0 auto;
+    }
+
+    .btn-div {
+        width: 10%;
+        margin: 0 auto;
+    }
+
+    .reset-btn {
+        text-decoration: underline;
+        border: none;
+        background: white;
+    }
+
+    @media screen and (max-width:1000px){
+        .btn-div {
+        width: 50%;
+    }
     }
 </style>
 

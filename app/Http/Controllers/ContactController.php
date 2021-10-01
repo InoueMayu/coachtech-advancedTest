@@ -90,10 +90,11 @@ class ContactController extends Controller
     }
 
     public function destroy($id) {
-        $data = Post::find($id);
+
+        $data = Contact::find($id);
 
         $data->delete();
 
-        return redirect()->route('search');
+        return redirect()->route('contact.search');
     }
 }

@@ -25,4 +25,4 @@ Route::get('thanks', [App\Http\Controllers\ContactController::class, 'thanks'])-
 
 Route::get('search', [App\Http\Controllers\ContactController::class, 'search'])->name('contact.search');
 
-Route::delete('search/{id}', [App\Http\Controllers\ContactController::class,'destroy'])->name('contact.destroy');
+Route::delete('delete/{id}', [App\Http\Controllers\ContactController::class,'destroy'])->name('contact.destroy');

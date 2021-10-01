@@ -8,10 +8,12 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 </head>
 
-<body style="padding: 50px;">
+<body style="padding-top: 200px;">
     <div class="container">
-        <p>ご意見いただきありがとうございました。</p>
-        <button class="btn btn-dark">トップページへ</button>
+        <p class="text-center">ご意見いただきありがとうございました。</p>
+        <div class="text-center mt-5">
+            <button class="btn btn-dark">トップページへ</button>
+        </div>
     </div>
 </body>
 </html>
