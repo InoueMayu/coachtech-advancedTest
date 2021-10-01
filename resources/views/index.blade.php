@@ -76,7 +76,10 @@
         <div class="form-group row mt-5">
             <label for="text3a" class="col-sm-2 col-form-label font-weight-bold">郵便番号 <span>※</span></label>
             <div class="col-sm-10">
-              <input name="postcode" type="text" class="form-control validate[required]" value="{{ old('postcode') }}"  id="postcode" onKeyUp="AjaxZip3.zip2addr(this,'','address','address');" >
+                <div class="flex">
+                    <span class="postcode">〒</span>
+                    <input name="postcode" type="text" class="form-control validate[required]" value="{{ old('postcode') }}"  id="postcode" onKeyUp="AjaxZip3.zip2addr(this,'','address','address');" >
+                </div>
               <div class="form-text text-muted">例）123-4567</div>
               @if ($errors->has('postcode'))
                 <p class="error-message">{{ $errors->first('postcode') }}</p>
@@ -129,6 +132,17 @@
 
     .error-message {
         color: red;
+    }
+
+    .flex {
+        display: flex;
+    }
+
+    .postcode {
+        color: black;
+        margin-top: 5px;
+        margin-right: 10px;
+        font-weight: bold;
     }
 
 </style>
