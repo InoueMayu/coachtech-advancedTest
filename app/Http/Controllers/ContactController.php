@@ -64,21 +64,33 @@ class ContactController extends Controller
 
         $query = Contact::query();
 
-        $query->when($fullname, function($query,$fullname) {
-            return $query->where('fullname', "LIKE", "%$fullname%")->get();
-        });
 
-        $query->when($email, function($query, $email) {
-            return $query->where('email', "LIKE", "%$email%")->get();
-        });
-
-        if ($request->has('gender') && $gender != ('全て')) {
-            $query->where('gender', $gender)->get();
+        if (!empty($fullname)) {
+            $query->where('fullname', 'LIKE', "%$fullname%")
+                ->get();
         }
 
-        elseif ($request->has('from') && $request->has('until')) {
+        if (!empty($email)) {
+            $query->where('email', 'LIKE', "%$email%")
+                ->get();
+        }
+
+        if (!empty($from) && !empty($until)) {
             $query->whereBetween('created_at', [$from, $until])
+                ->get();
+        }
+
+        if ($request->has('gender') && $gender != ('全て')) {
+            $query->where('gender', $gender)
             ->get();
+        }
+
+        if (!empty($from) && empty($until)) {
+            $query->where('created_at', '>=', $from)->get();
+        }
+
+        if (empty($from) && !empty($until)) {
+            $query->where('created_at', '<=', $until)->get();
         }
 
 

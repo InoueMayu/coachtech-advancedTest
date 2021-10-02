@@ -37,8 +37,15 @@
         <div class="form-group row mt-5">
             <label for="text3a" class="col-sm-2 col-form-label font-weight-bold">お名前 <span>※</span></label>
             <div class="col-sm-10">
-              <input name="fullname" type="text" class="form-control validate[required]" value="{{ old('fullname') }}" id="fullname">
-              <div class="form-text text-muted">例）山田 太朗</div>
+                <div class="form-inline">
+                    <input type="text" name="fullname_A" class="name_margin form-control col-sm-5 validate[required]" value="{{ old('fullname_A') }}" >
+                    <input type="text" name="fullname_B" class="form-control col-sm-5 validate[required]" value="{{ old('fullname_B') }}">
+                    <input name="fullname" type="hidden" class="form-control" value="{{ old('fullname') }}" id="fullname">
+                </div>
+                <div class="form-inline">
+                    <div class="form-text text-muted col-sm-5">例）山田 </div>
+                    <div class="form-text text-muted col-sm-5">例）太朗</div>
+                </div>
               @if ($errors->has('fullname'))
                 <p class="error-message">{{ $errors->first('fullname') }}</p>
               @endif
@@ -145,6 +152,10 @@
         font-weight: bold;
     }
 
+    .name_margin {
+        margin-right: 10px
+    }
+
 </style>
 
 
@@ -168,6 +179,14 @@ $(function() {
         .replace(/ー/g,"-");
 
     $(this).val(normalizedText);
+  });
+});
+
+$(function(){
+  $('[name=fullname_A],[name=fullname_B]').on('input',function(){
+    let v1=$('[name=fullname_A]').val();
+    let v2=$('[name=fullname_B]').val();
+    $('[name=fullname]').val((v1!="" && v2!="")?(v1+"　"+v2):"");
   });
 });
 

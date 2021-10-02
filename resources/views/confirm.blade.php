@@ -19,6 +19,8 @@
             <div class="col-lg-2 col-md-6 col-sm-6 text-center">
                 {{ $inputs['fullname'] }}
             </div>
+            <input type="hidden" value="{{ $inputs['fullname_A'] }}" name="fullname_A">
+            <input type="hidden" value="{{ $inputs['fullname_B'] }}" name="fullname_B">
             <input class="form-control" type="hidden" name="fullname" value="{{ $inputs['fullname'] }}">
         </div>
 

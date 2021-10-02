@@ -11,20 +11,21 @@
 
 <body style="padding: 100px 0;">
 
-    <div class="container">
+      <div class="container">
         <h1 class="text-center mb-5">管理システム</h1>
 
         <form class="contact row">
 
-          <div class="col-md-6 mt-5">
-            <label for="inputEmail4" class="col-form-label font-weight-bold col-sm-2">お名前</label>
-            <div class="form-check-inline">
+          <div class="col-md-6 mt-5 flex-item">
+            <label for="inputEmail4" class="col-form-label font-weight-bold col-lg-2 col-md-4 col-sm-4">お名前</label>
+            <div class="col-sm-8">
               <input name="fullname" type="text" class="form-control" id="fullname">
             </div>
           </div>
 
-          <div class="col-md-6 mt-5">
-            <label for="text3a" class="col-sm-2 col-form-label font-weight-bold">性別</label>
+          <div class="col-md-6 mt-5 flex-item">
+            <label for="text3a" class="col-sm-2 col-lg-2 col-md-4 col-form-label font-weight-bold">性別</label>
+
               <div class="form-check form-check-inline">
                 <input  class="form-check-input" type="radio" id="radio2a" name="gender" value="全て" checked id="gender">
                 <label class="form-check-label" for="radio2a">全て</label>
@@ -37,23 +38,25 @@
                 <input class="form-check-input" type="radio" id="radio2a" name="gender" value="女性" id="gender">
                 <label class="form-check-label" for="radio2b">女性</label>
               </div>
+
           </div>
 
-          <div class="col-md-6 mt-5">
-            <label for="inputEmail4" class="col-form-label font-weight-bold col-sm-2">登録日</label>
-            <div class="form-check-inline">
+          <div class="col-md-6 mt-5 flex-item">
+            <label for="inputEmail4" class="col-form-label font-weight-bold col-lg-2 col-md-4 col-sm-4">登録日</label>
+            <div class="col-sm-8">
               <input type="date" name="from" id="text3a" class="form-control" value="from">
             </div>
           </div>
-          <div class="col-md-6 mt-5">
-            <label for="inputEmail4" class="col-form-label font-weight-bold col-sm-2">〜</label>
-            <div class="form-check-inline">
+          <div class="col-md-6 mt-5 flex-item">
+            <label for="inputEmail4" class="col-form-label font-weight-bold col-lg-2 col-md-4 col-sm-4">〜</label>
+            <div class="col-sm-8">
               <input type="date" name="until" id="text3a" class="form-control" value="until">
             </div>
           </div>
-          <div class="col-12 mt-5">
-            <label for="inputAddress" class="col-form-label font-weight-bold col-sm-2">メールアドレス</label>
-            <div class="form-check-inline">
+
+          <div class="col-12 mt-5 flex-item">
+            <label for="inputAddress" class="col-form-label font-weight-bold col-lg-2 col-md-4 col-sm-5">メールアドレス</label>
+            <div class="col-sm-8">
               <input name="email" type="text" class="form-control" id="email">
             </div>
           </div>
@@ -105,7 +108,6 @@
                             <div class="row py-2 text-center">
                                 <div class="col-lg-1">
                                    {{ $item->id }}
-                                   {{-- {{$item->created_at}} --}}
                                 </div>
                                 <div class="col-lg-2">
                                     {{ $item->fullname }}
@@ -122,7 +124,7 @@
                                 <form action="{{ route('contact.destroy', $item->id) }}" method="post" class="delete-form">
                                     @csrf
                                     @method('DELETE')
-                                    <div class="col-lg-12">
+                                    <div class="col-lg-12 delete-btn">
                                         <button type="submit" class="btn btn-dark btn-sm">削除</button>
                                     </div>
                                 </form>
@@ -167,6 +169,14 @@
         background: white;
     }
 
+    .delete-btn {
+        margin-left: 50px;
+    }
+
+    .flex-item {
+        display: flex;
+    }
+
 
 
     @media screen and (max-width:1000px){
@@ -185,6 +195,10 @@
 
     .btn-div {
         width: 50%;
+    }
+
+    .delete-btn {
+        margin-left: 0px;
     }
     }
   </style>
