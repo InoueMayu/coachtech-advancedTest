@@ -5,25 +5,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>お問い合わせ</title>
+
+    {{-- Bootstrap --}}
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 
+    {{-- 住所自動入力 --}}
     <script src="https://ajaxzip3.github.io/ajaxzip3.js" charset="UTF-8"></script>
 
+    {{-- jquery読み込み --}}
     <script
         src="https://code.jquery.com/jquery-3.6.0.min.js"
         integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
         crossorigin="anonymous"></script>
 
+    {{-- リアルタイムバリデーション --}}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jQuery-Validation-Engine/2.6.4/validationEngine.jquery.min.css" type="text/css"/>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jQuery-Validation-Engine/2.6.4/jquery-1.8.2.min.js" type="text/javascript"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jQuery-Validation-Engine/2.6.4/languages/jquery.validationEngine-ja.min.js" type="text/javascript" charset="utf-8"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jQuery-Validation-Engine/2.6.4/jquery.validationEngine.min.js" type="text/javascript" charset="utf-8"></script>
-
     <script type="text/javascript">
         jQuery(document).ready(function(){
            jQuery("#form").validationEngine();
         });
-        </script>
+     </script>
 
 </head>
 
@@ -136,36 +140,30 @@
     span {
         color: red;
     }
-
     .error-message {
         color: red;
     }
-
     .flex {
         display: flex;
     }
-
     .postcode {
         color: black;
         margin-top: 5px;
         margin-right: 10px;
         font-weight: bold;
     }
-
     .name_margin {
         margin-right: 10px
     }
-
 </style>
 
 
 <script>
 
+// 郵便番号自動変換
 $(function() {
   $('#postcode').on('input', function() {
-
     let text = $(this).val();
-
     let normalizedText = text.replace(/[！-～]/g,function(s){
       return String.fromCharCode(s.charCodeAt(0)-0xFEE0);
     });
@@ -177,11 +175,11 @@ $(function() {
         .replace(/’/g,"'")
         .replace(/”/g,"\"")
         .replace(/ー/g,"-");
-
     $(this).val(normalizedText);
   });
 });
 
+// 氏名（姓と名）を結合
 $(function(){
   $('[name=fullname_A],[name=fullname_B]').on('input',function(){
     let v1=$('[name=fullname_A]').val();
@@ -189,6 +187,5 @@ $(function(){
     $('[name=fullname]').val((v1!="" && v2!="")?(v1+"　"+v2):"");
   });
 });
-
 
 </script>

@@ -9,7 +9,9 @@ use App\Rules\Postcode;
 class ContactController extends Controller
 {
     public function index (){
+
         return view("index");
+
     }
 
 
@@ -30,6 +32,7 @@ class ContactController extends Controller
 
     }
 
+
     public function process(Request $request){
 
         $action = $request->get('submit', 'back');
@@ -43,15 +46,19 @@ class ContactController extends Controller
 
             return redirect()->route('contact.thanks');
 
-
         } else {
             return redirect()->route('contact.index')->withInput($input);
         }
 
     }
+
+
     public function thanks() {
+
         return view('thanks');
+
     }
+
 
     public function search(Request $request) {
 
@@ -61,9 +68,7 @@ class ContactController extends Controller
         $from = $request->input('from');
         $until = $request->input('until');
 
-
         $query = Contact::query();
-
 
         if (!empty($fullname)) {
             $query->where('fullname', 'LIKE', "%$fullname%")
@@ -93,7 +98,6 @@ class ContactController extends Controller
             $query->where('created_at', '<=', $until)->get();
         }
 
-
         $data = $query->paginate(10);
 
         return view('search',[
@@ -104,7 +108,6 @@ class ContactController extends Controller
     public function destroy($id) {
 
         $data = Contact::find($id);
-
         $data->delete();
 
         return redirect()->route('contact.search');
